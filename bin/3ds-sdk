@@ -1,0 +1,25 @@
+#!/bin/bash
+
+case "$1" in
+  new)
+    cp -r templates/basic "$2"
+    echo "Projeto criado: $2"
+    ;;
+  build)
+    make
+    ;;
+  clean)
+    make clean
+    ;;
+  doctor)
+    echo "3DS-SDK 0.1"
+    command -v gcc >/dev/null && echo "✔ GCC encontrado"
+    ;;
+  *)
+    echo "Comandos:"
+    echo "  new <nome>"
+    echo "  build"
+    echo "  clean"
+    echo "  doctor"
+    ;;
+esac
