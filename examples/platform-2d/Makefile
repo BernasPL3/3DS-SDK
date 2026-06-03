@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall
 
 SRC=source/main.c
-OUT=platformer
+OUT=.cia
 
 all:
 	$(CC) $(CFLAGS) $(SRC) -o $(OUT)
