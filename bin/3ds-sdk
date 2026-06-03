@@ -1,25 +1,75 @@
 #!/bin/bash
 
+VERSION="0.1.0"
+
 case "$1" in
   new)
     cp -r templates/basic "$2"
-    echo "Projeto criado: $2"
+    echo "✔ Projeto criado: $2"
     ;;
+
   build)
     make
     ;;
+
   clean)
     make clean
     ;;
-  doctor)
-    echo "3DS-SDK 0.1"
-    command -v gcc >/dev/null && echo "✔ GCC encontrado"
+
+  run)
+    echo "▶ Executando projeto..."
     ;;
+
+  package)
+    echo "📦 Gerando pacote..."
+    ;;
+
+  install)
+    echo "📲 Instalando no dispositivo..."
+    ;;
+
+  doctor)
+    echo "3DS-SDK $VERSION"
+    command -v gcc >/dev/null && echo "✔ GCC encontrado"
+    command -v make >/dev/null && echo "✔ Make encontrado"
+    ;;
+
+  version)
+    echo "3DS-SDK $VERSION"
+    ;;
+
+  examples)
+    echo "Exemplos disponíveis:"
+    echo "  hello-world"
+    echo "  sprite-demo"
+    echo "  input-demo"
+    ;;
+
+  docs)
+    echo "Documentação:"
+    echo "  docs/getting-started.md"
+    echo "  docs/commands.md"
+    echo "  docs/project-structure.md"
+    echo "  docs/faq.md"
+    ;;
+
+  help)
+    echo "Comandos disponíveis:"
+    echo "  new <nome>     Criar projeto"
+    echo "  build          Compilar"
+    echo "  clean          Limpar build"
+    echo "  run            Executar"
+    echo "  package        Gerar pacote"
+    echo "  install        Instalar"
+    echo "  doctor         Verificar SDK"
+    echo "  version        Mostrar versão"
+    echo "  examples       Listar exemplos"
+    echo "  docs           Mostrar documentação"
+    echo "  help           Ajuda"
+    ;;
+
   *)
-    echo "Comandos:"
-    echo "  new <nome>"
-    echo "  build"
-    echo "  clean"
-    echo "  doctor"
+    echo "Comando desconhecido."
+    echo "Use: 3ds-sdk help"
     ;;
 esac
