@@ -15,7 +15,7 @@ A simple and open-source Software Development Kit for creating Nintendo 3DS home
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/3DS-SDK.git
+git clone https://github.com/BernasPL3/3DS-SDK.git
 cd 3DS-SDK
 ```
 
