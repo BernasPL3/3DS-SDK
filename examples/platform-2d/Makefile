@@ -1,11 +1,20 @@
-CC=gcc
-CFLAGS=-Wall
+APPNAME=platform-2d
 
-SRC=source/main.c
-OUT=platform.cia
+all: $(APPNAME).cia
 
-all:
-	$(CC) $(CFLAGS) $(SRC) -o $(OUT)
+icon.icn: assets/icon.png
+	bannertool makesmdh \
+		-s "$(APPNAME)" \
+		-l "$(APPNAME)" \
+		-p "3DS-SDK" \
+		-i assets/icon.png \
+		-o icon.icn
+
+$(APPNAME).cia: icon.icn
+	makerom \
+		-f cia \
+		-o $(APPNAME).cia \
+		-icon icon.icn
 
 clean:
-	rm -f $(OUT)
+	rm -f *.icn *.cia
