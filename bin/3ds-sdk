@@ -6,13 +6,19 @@ case "$1" in
     echo "Projeto criado: $2"
     ;;
 
-  build)
-    mkdir -p build
 
-    gcc source/main.c -o build/game
+mkdir -p build
 
-    echo "Build concluído!"
-    ;;
+if ls source/*.cpp >/dev/null 2>&1; then
+    echo "Compilando C++..."
+    g++ source/*.cpp -o build/game
+elif ls source/*.c >/dev/null 2>&1; then
+    echo "Compilando C..."
+    gcc source/*.c -o build/game
+else
+    echo "Nenhum arquivo .c ou .cpp encontrado em source/"
+    exit 1
+fi
 
   cia)
     makerom -f cia \
