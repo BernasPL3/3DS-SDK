@@ -9,7 +9,7 @@ case "$1" in
   build)
     mkdir -p build
 
-    g++ source/*.cpp -o build/game
+    gcc source/*.c -o build/game
 
     echo "Build concluído!"
     ;;
